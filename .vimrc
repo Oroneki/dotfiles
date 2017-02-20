@@ -3,7 +3,8 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 " disable vi compatibility (emulation of old bugs)
-set nocompatible
+set nocompatible "OBRIGATORIO PRA USAR O VUNDLE
+filetype off
 " use indentation of previous line
 set autoindent
 " use intelligent indentation for C
@@ -48,8 +49,18 @@ set path+=**
 set wildmenu
 filetype plugin on
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"---------- PLUGINS ABAIXO -----------
+Plugin 'VundleVim/Vundle.vim'
+
+"
+"-----------PLUGINS ACIMA-------------
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
 colorscheme wombat256i
-execute pathogen#infect()
 set colorcolumn=90
 set autoread "" qd mudar de fora ele atualiza
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
