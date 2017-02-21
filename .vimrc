@@ -59,7 +59,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'valloric/youcompleteme'
+"Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
 Plugin 'mattn/emmet-vim'
 "
 "-----------PLUGINS ACIMA-------------
