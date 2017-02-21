@@ -51,9 +51,13 @@ filetype plugin on
 if has ("win32")
     set rtp+=$USERPROFILE\.vim\bundle\Vundle.vim
     set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
+   " let Tlist_Ctags_Cmd = $USERPROFILE.'\\ctags58\\ctags.exe'
+    let g:easytags_cmd = $USERPROFILE.'\ctags58'
+
 elseif has ("unix")
     set rtp+=~/.vim/bundle/Vundle.vim    
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
+    "sudo apt-get install exuberant-ctags
 endif
 call vundle#begin()
 "---------- PLUGINS ABAIXO -----------
@@ -66,6 +70,9 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
 Plugin 'mattn/emmet-vim'
+"Plugin 'taglist.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 "
 "-----------PLUGINS ACIMA-------------
 call vundle#end()            " required
@@ -77,3 +84,4 @@ set colorcolumn=90
 set autoread "" qd mudar de fora ele atualiza
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
 map <C-n> :NERDTreeToggle<CR>         
+set ruler
