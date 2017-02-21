@@ -53,7 +53,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "---------- PLUGINS ABAIXO -----------
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'valloric/youcompleteme'
+Plugin 'mattn/emmet-vim'
 "
 "-----------PLUGINS ACIMA-------------
 call vundle#end()            " required
