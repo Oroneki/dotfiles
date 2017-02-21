@@ -48,8 +48,13 @@ endfunction
 set path+=**
 set wildmenu
 filetype plugin on
-
-set rtp+=~/.vim/bundle/Vundle.vim
+if has ("win32")
+    set rtp+=$USERPROFILE\.vim\bundle\Vundle.vim
+    set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
+elseif has ("unix")
+    set rtp+=~/.vim/bundle/Vundle.vim    
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
+endif
 call vundle#begin()
 "---------- PLUGINS ABAIXO -----------
 Plugin 'VundleVim/Vundle.vim'
