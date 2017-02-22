@@ -1,0 +1,11 @@
+BoldAsFont=-1
+Transparency=off
+CursorType=block
+Locale=pt_BR
+Charset=UTF-8
+Term=xterm-256color
+Font=Consolas
+FontHeight=12
+ForegroundColour=234,234,234
+CursorColour=255,255,202
+FontSmoothing=default
