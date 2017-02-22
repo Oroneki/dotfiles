@@ -85,3 +85,4 @@ set autoread "" qd mudar de fora ele atualiza
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
 map <C-n> :NERDTreeToggle<CR>         
 set ruler
+
