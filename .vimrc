@@ -52,7 +52,7 @@ if has("win32") || has("win64") || has("win")
     set rtp+=$USERPROFILE\.vim\bundle\Vundle.vim
     set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
    " let Tlist_Ctags_Cmd = $USERPROFILE.'\\ctags58\\ctags.exe'
-    let g:easytags_cmd = $USERPROFILE.'\ctags58'
+    " let g:easytags_cmd = $USERPROFILE.'\ctags58'
     echo "windows"
 elseif has("unix")
     set rtp+=~/.vim/bundle/Vundle.vim    
@@ -73,8 +73,8 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
 Plugin 'mattn/emmet-vim'
 "Plugin 'taglist.vim'
-"Plugin 'xolox/vim-easytags'
 "Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
 "
 "-----------PLUGINS ACIMA-------------
 call vundle#end()            " required
