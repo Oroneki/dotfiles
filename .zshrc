@@ -89,3 +89,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 export ANDROID_HOME=${HOME}/Android/Sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools   
+alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
