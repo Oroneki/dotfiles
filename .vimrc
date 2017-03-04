@@ -23,6 +23,9 @@ syntax on
 "set number
 " highlight matching braces
 set showmatch
+set backspace=indent,eol,start     " let the backspace key work normally
+set hidden                         " hide unsaved buffers
+set incsearch                      " incremental search rules
 " status line
 set laststatus=2
 set statusline=
@@ -64,20 +67,23 @@ endif
 call vundle#begin()
 "---------- PLUGINS ABAIXO -----------
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
+Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
+Plugin 'ervandew/supertab'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 "Plugin 'mattn/emmet-vim'
 "Plugin 'taglist.vim'
 "Plugin 'xolox/vim-misc'
 "Plugin 'xolox/vim-easytags'
-Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'Shougo/neocomplete'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
 "
 "-----------PLUGINS ACIMA-------------
 call vundle#end()            " required
@@ -87,7 +93,7 @@ filetype plugin indent on    " required
 colorscheme wombat256i
 set colorcolumn=90
 set autoread "" qd mudar de fora ele atualiza
-map <C-n> :NERDTreeToggle<CR>         
+"map <C-n> :NERDTreeToggle<CR>         
 set ruler
 
 "let g:easytags_cmd = $USERPROFILE.'\ctags58'
@@ -107,4 +113,23 @@ function! g:ToggleNuMode()
     endif
 endfunc
 
-map <C-l> :call g:ToggleNuMode()<CR>
+map <C-k> :call g:ToggleNuMode()<CR>
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+"
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"
+let base16colorspace=256
+"let g:airline_theme = "sol"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" Navigation shortcuts
+map <C-t> :TagbarToggle<CR>         " toggle tag bar
+map <C-l> :bnext<CR>                " switch to next buffer
+map <C-h> :bprevious<CR>            " switch to previous buffer
