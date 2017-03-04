@@ -92,3 +92,12 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias dot_ls="dot ls-tree --full-tree -r HEAD --name-only"
 alias dot_tree="dot log --graph --decorate --oneline"
+
+if [ -r $HOME/.oro_bash_env ]; then
+    source $HOME/.oro_bash_env
+else
+    source $HOME/.oro_bash_env.example
+fi
+
+
+

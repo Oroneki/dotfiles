@@ -61,3 +61,13 @@
 --regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
 --regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
 --regex-css=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
+
+--PHP-kinds=+cfd-v
+--regex-PHP=/^\s*abstract\s+class\s+([^ ]+)/\1/c/
+--regex-PHP=/^\s*interface\s+([^ ]+)/\1/c/
+--regex-PHP=/^\s*trait\s+([^ ]+)/\1/c/
+--regex-PHP=/^\s*(public\s+|static\s+|abstract\s+|final\s+|protected\s+|private\s+)function\s+\&?\s*([^
+(]+)/\2/f/
+--regex-PHP=/^\s*function\s+\&?\s*([^ (]+)/\1/f/
+--regex-PHP=/^\s*const\s+([^ =]+)/\1/d/
+--regex-PHP=/^\s*define\(\"([^ ]+)\"/\1/d/
