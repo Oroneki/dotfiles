@@ -70,11 +70,15 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 "Plugin 'mattn/emmet-vim'
 "Plugin 'taglist.vim'
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 "Plugin 'Shougo/neocomplete'
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'tpope/vim-fugitive'
+Plugin 'itchyny/lightline.vim'
+Plugin 'sheerun/vim-polyglot'
+
 "
 "-----------PLUGINS ACIMA-------------
 call vundle#end()            " required
@@ -124,3 +128,11 @@ let base16colorspace=256
 "map <C-t> :TagbarToggle<CR>         " toggle tag bar
 map <C-l> :bnext<CR>                " switch to next buffer
 map <C-h> :bprevious<CR>            " switch to previous buffer
+map <leader>t :CtrlPTag<CR>
+"mapear o comentario melhor
+"let g:easytags_dynamic_files = 1
+"set tags=./tags;
+let g:ctrlp_working_path_mode = 'ra'
+let g:easytags_by_filetype=$PWD.'/.git/tags'
+let g:easytags_opts = ['--options=$HOME/.ctags']
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:80'
