@@ -134,5 +134,6 @@ map <leader>t :CtrlPTag<CR>
 "set tags=./tags;
 let g:ctrlp_working_path_mode = 'ra'
 let g:easytags_by_filetype=$PWD.'/.git/tags'
-let g:easytags_opts = ['--options=$HOME/.ctags']
+"let g:easytags_opts = ['--options=$HOME/.ctags']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:80'
+let g:ctrlp_custom_ignore = { 'dir': 'build$\|node_modules$|vendor$' }
