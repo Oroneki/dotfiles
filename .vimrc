@@ -87,6 +87,7 @@ filetype plugin indent on    " required
 
 colorscheme wombat256i
 set colorcolumn=90
+highlight ColorColumn ctermbg=238
 set autoread "" qd mudar de fora ele atualiza
 "map <C-n> :NERDTreeToggle<CR>         
 set ruler
@@ -137,3 +138,5 @@ let g:easytags_by_filetype=$PWD.'/.git/tags'
 "let g:easytags_opts = ['--options=$HOME/.ctags']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:80'
 let g:ctrlp_custom_ignore = { 'dir': 'build$\|node_modules$|vendor$' }
+map <leader>- :vertical resize -5<CR> 
+map <leader>= :vertical resize +5<CR> 
