@@ -29,4 +29,3 @@
 --exclude=*tmp*
 --exclude=.#*
 --tag-relative=yes
---recurse=yes

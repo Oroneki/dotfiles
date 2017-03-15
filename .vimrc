@@ -51,8 +51,8 @@ set incsearch                      " incremental search rules
 set path+=**
 set wildmenu
 set rtp+=~/.vim/bundle/Vundle.vim    
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
 "sudo apt-get install exuberant-ctags
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
 
 call vundle#begin()
 "---------- PLUGINS ABAIXO -----------
@@ -64,7 +64,7 @@ Plugin 'kien/ctrlp.vim'
 "
 "Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
+Plugin 'valloric/YouCompleteMe' "DEU PAU NO COMPILE
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -75,9 +75,10 @@ Plugin 'xolox/vim-easytags'
 "Plugin 'Shougo/neocomplete'
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
-Plugin 'sheerun/vim-polyglot'
+"Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-obsession'
 
 "
 "-----------PLUGINS ACIMA-------------
@@ -135,8 +136,13 @@ map <leader>t :CtrlPTag<CR>
 "set tags=./tags;
 let g:ctrlp_working_path_mode = 'ra'
 let g:easytags_by_filetype=$PWD.'/.git/tags'
+let g:easytags_auto_update = 0
 "let g:easytags_opts = ['--options=$HOME/.ctags']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:80'
-let g:ctrlp_custom_ignore = { 'dir': 'build$\|node_modules$|vendor$' }
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data$\|log\|tmp$|vendor\|node_modules\',
+  \ 'file': '\.exe$\|\.so$\|\.dat$'
+  \ }
 map <leader>- :vertical resize -5<CR> 
 map <leader>= :vertical resize +5<CR> 
+set clipboard=unnamedplus
