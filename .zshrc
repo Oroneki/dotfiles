@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -92,13 +92,13 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias dot_ls="dot ls-tree --full-tree -r HEAD --name-only"
 alias dot_tree="dot log --graph --decorate --oneline"
-alias git_tree="git log --graph --decorate --oneline"
-
+alias git_tree="log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
+alias gtree="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
 if [ -r $HOME/.oro_bash_env ]; then
     source $HOME/.oro_bash_env
 else
     source $HOME/.oro_bash_env.example
 fi
 
-
+#export VIRTUAL_ENV_DISABLE_PROMPT=0
 

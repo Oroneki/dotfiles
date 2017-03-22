@@ -27,25 +27,93 @@ set backspace=indent,eol,start     " let the backspace key work normally
 set hidden                         " hide unsaved buffers
 set incsearch                      " incremental search rules
 " status line
-"set laststatus=2
-"set statusline=
-"set statusline+=%7*\[%n]                                  "buffernr
-"set statusline+=%1*\ %<%F\                                "File+path
-"set statusline+=%2*\ %y\                                  "FileType
-"set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
-"set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-"set statusline+=%4*\ %{&ff}\                              "FileFormat
-"set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage &
-"set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
-"set statusline+=%9*\ col:%03c\                            "Colnr
-"set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly?
-"function! HighlightSearch()
-    "f &hls
-        "return 'H'
-    "else
-        "return ''
-    "endif
-"endfunction
+set laststatus=2
+set statusline=
+set statusline+=%7*\[%n]                                  "buffernr
+set statusline+=%F
+set statusline+=%1*\ %<%F\                                "File+path
+set statusline+=%2*\ %y\                                  "FileType
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
+set statusline+=%4*\ %{&ff}\                              "FileFormat
+set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage &
+set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
+set statusline+=%9*\ col:%03c\                            "Colnr
+set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly?
+function! HighlightSearch()
+    f &hls
+        return 'H'
+    else
+        return ''
+    endif
+endfunction
+
+
+let g:lightline = {
+      \ 'colorscheme': 'landscape',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightlineModified',
+      \   'readonly': 'LightlineReadonly',
+      \   'fugitive': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \ },
+      \ 'separator': { 'left': '>', 'right': '<' },
+      \ 'subseparator': { 'left': '$', 'right': '$' }
+      \ }
+"--------------------------------------------------------------------
+
+
+"-------------------------------------------------------------------
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '|' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%') ? expand('%') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? '| '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+
 " more
 " --------------------------------------------------------------
 set path+=**
@@ -77,8 +145,11 @@ Plugin 'xolox/vim-easytags'
 "Plugin 'Shougo/neosnippet-snippets'
 Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
-"Plugin 'sheerun/vim-polyglot'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-obsession'
+Plugin 'tweekmonster/django-plus.vim'
+Plugin 'tpope/vim-surround'
+
 
 "
 "-----------PLUGINS ACIMA-------------
@@ -140,8 +211,8 @@ let g:easytags_auto_update = 0
 "let g:easytags_opts = ['--options=$HOME/.ctags']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:80'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data$\|log\|tmp$|vendor\|node_modules\',
-  \ 'file': '\.exe$\|\.so$\|\.dat$'
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data$\|log$\|tmp$|vendor\|node_modules\',
+  \ 'file': '\.exe$\|\.so$\|\.dat$|\.png$|\.jpg$|\.jpeg$|\*.png$'
   \ }
 map <leader>- :vertical resize -5<CR> 
 map <leader>= :vertical resize +5<CR> 
