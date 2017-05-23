@@ -19,8 +19,8 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-alias dot='git --git-dir=/c/Users/00104509392/.dotfiles/ --work-tree=/c/Users/00104509392'
-alias dot_ls='dot ls-tree --full-tree -r HEAD --name-only'
-alias dot_tree='dot log --graph --decorate --oneline'
+alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dot_ls="dot ls-tree --full-tree -r HEAD --name-only"
+alias dot_tree="dot log --graph --decorate --oneline"
 
 
