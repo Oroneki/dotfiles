@@ -71,10 +71,13 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'valloric/youcompleteme' "DEU PAU NO COMPILE
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 "Plugin 'taglist.vim'
 "Plugin 'xolox/vim-misc'
 "Plugin 'xolox/vim-easytags'
+Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 "
 "-----------PLUGINS ACIMA-------------
 call vundle#end()            " required
@@ -88,3 +91,20 @@ map <C-n> :NERDTreeToggle<CR>
 set ruler
 
 "let g:easytags_cmd = $USERPROFILE.'\ctags58'
+
+
+setglobal relativenumber
+autocmd WinEnter * :setlocal relativenumber
+autocmd WinLeave,FocusLost * :setlocal number
+autocmd InsertEnter * :setlocal number
+autocmd InsertLeave * :setlocal relativenumber
+
+function! g:ToggleNuMode()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
+map <C-l> :call g:ToggleNuMode()<CR>

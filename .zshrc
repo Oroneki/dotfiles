@@ -89,3 +89,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 export ANDROID_HOME=${HOME}/Android/Sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools   
+alias youtube-dl-batch="youtube-dl --batch-file ~/Dropbox/tudo/youtube-dl-files/lista_pra_baixar.txt --config-location ~/Dropbox/tudo/youtube-dl-files/y.conf"
+alias youtube-dl-play="youtube-dl $@ --config-location ~/Dropbox/tudo/youtube-dl-files/y.conf"
+
